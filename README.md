@@ -10,6 +10,7 @@
 - SSH into the server:
 ```bash
 ssh -i "myapp-key.pem" ubuntu@43.205.189.41
+```
 
 ---
 
@@ -19,6 +20,7 @@ ssh -i "myapp-key.pem" ubuntu@43.205.189.41
 sudo apt update
 sudo apt install openjdk-17-jre-headless -y
 java -version
+```
 
 ---
 
@@ -26,6 +28,7 @@ java -version
 - Copy the Spring Boot JAR to the server:
 ```bash
 scp -i "myapp-key.pem" HelloWorld.jar ubuntu@43.205.189.41:/opt/myapp/
+```
 
 ---
 
@@ -53,14 +56,15 @@ sudo systemctl daemon-reload
 sudo systemctl enable myapp
 sudo systemctl start myapp
 sudo systemctl status myapp --no-pager
+```
 
 ---
-
 
 ## 5. Install Nginx & Configure Reverse Proxy with SSL
 - Install Nginx:
 ```bash
 sudo apt install nginx -y
+```
 
 - Create a self-signed SSL certificate:
 
@@ -70,6 +74,7 @@ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
   -out /etc/ssl/certs/myapp.crt
 
 - Configure Nginx:
+```
 
 ```bash
 sudo tee /etc/nginx/sites-available/myapp >/dev/null <<'EOF'
@@ -100,6 +105,7 @@ EOF
 sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl restart nginx
+```
 
 ---
 
@@ -110,6 +116,7 @@ sudo systemctl restart nginx
 - Test via curl:
 ```bash
 curl https://43.205.189.41/hello --insecure
+```
 
 - Note: Browser shows “Not Secure” because the certificate is self-signed.
 
@@ -120,3 +127,4 @@ curl https://43.205.189.41/hello --insecure
 - Test connectivity:
 ```bash
 Test-NetConnection -ComputerName 43.205.189.41 -Port 443
+```

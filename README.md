@@ -1,4 +1,4 @@
-# DealerApp-Backend
+# Assignment
 # Task 1: Server Deployment & Security
 
 **Objective:** Deploy the Spring Boot app on an Ubuntu server with HTTPS and auto-restart capabilities.

@@ -72,9 +72,9 @@ sudo apt install nginx -y
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
   -keyout /etc/ssl/private/myapp.key \
   -out /etc/ssl/certs/myapp.crt
+```
 
 - Configure Nginx:
-```
 
 ```bash
 sudo tee /etc/nginx/sites-available/myapp >/dev/null <<'EOF'
